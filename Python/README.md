@@ -30,6 +30,7 @@
   * [Bitwise Operator](#bitwise-operator)
 * [Exceptions](#exceptions)
   * [Handling Exceptions](#handling-exceptions)
+  * [Raising an Exception](#raising-an-exception)
 * [Reference](#reference)
 
 
@@ -377,6 +378,8 @@ not in    x not in y    True if x not member of collection y
 ```
 ## Exceptions
 
+Exceptions are an excellent way to report runtime errors.
+
 ### Handling Exceptions
 
 syntax:
@@ -406,6 +409,41 @@ def main():
         print(x)
 
 if __name__ == '__main__': main()
+```
+### Raising an Exception
+
+Syntax:
+
+```python
+raise <ErrorType>
+```
+or 
+
+```python
+raise <ErrorType>(f'<Message>')
+```
+
+e.g:
+
+```python
+>>> x = -1
+>>> if x < 0:
+...     raise TypeError('Value of x cannot be less than zero')
+... 
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+TypeError: Value of x cannot be less than zero
+>>> 
+```
+To handle the exception properly us 'try' block.
+
+```python
+x = -1
+try:
+    if x < 0:
+        raise TypeError(f'Value of x cannot be less than zero')
+except TypeError:
+    print(f'Provide a value greater than 0')
 ```
 
 ## Reference
