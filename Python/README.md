@@ -285,6 +285,36 @@ class Dog:
 'Buddy'
 ```
 
+Class inheritance.
+
+```python
+#!/usr/bin/env python3
+
+class Animal:
+    def __init__(self, name):
+        self._name = name
+
+    def Name(self):
+        return self._name
+    
+
+class Dog(Animal):
+    type = 'canine'
+    def __init__(self, name):
+        Animal.__init__(self, name)
+    
+    def Type(self):
+        return self.type
+
+def main():
+    x = Animal("Buddy")
+    y = Dog("Fido")
+    print(x.Name())
+    print(f'{y.Name()}, {y.Type()}')
+
+if __name__ == '__main__': main()
+```
+
 ## Operators
 
 ### Comparison Operators
