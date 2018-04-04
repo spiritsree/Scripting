@@ -387,9 +387,9 @@ syntax:
 ```python
 try:                 	 # To catch the exception.
     "code block"
-except <ExceptionName>:  # Handle a specif Exception.
+except <ExceptionName>:  # Handle a specifc Exception.
     "Code Block"
-except:            	 # Handle all remaining exceptions.
+except:            	 # Handle all other exceptions.
     "Code Block"
 else:
     "Code Block"
@@ -442,8 +442,8 @@ x = -1
 try:
     if x < 0:
         raise TypeError(f'Value of x cannot be less than zero')
-except TypeError:
-    print(f'Provide a value greater than 0')
+except TypeError as e:
+    print(f'Value Error: {e}')
 ```
 
 ## Reference
