@@ -31,6 +31,8 @@
 * [Exceptions](#exceptions)
   * [Handling Exceptions](#handling-exceptions)
   * [Raising an Exception](#raising-an-exception)
+* [String Methods](#string-methods)
+* [File I/O](#file-io)
 * [Reference](#reference)
 
 
@@ -444,6 +446,136 @@ try:
         raise TypeError(f'Value of x cannot be less than zero')
 except TypeError as e:
     print(f'Value Error: {e}')
+```
+## String Methods
+
+Strings and first class objects in python 3.</br>
+Strings are immutable.
+
+These are the common methods for a string.
+
+```python
+>>> 'hello world!'.upper()
+'HELLO WORLD!'
+>>> 'hello world!'.capitalize()
+'Hello world!'
+>>> 'hello world!'.title()
+'Hello World!'
+>>> 'Hello World!'.swapcase()
+'hELLO wORLD!'
+>>> 'Hello World!'.lower()
+'hello world!'
+>>> 'Hello World!'.casefold()    # Similar to lower() but more strong.
+'hello world!'
+>>> s1 = "hello"
+>>> s2 = "world"
+>>> s1 + ' ' +  s2            # Concatenation
+'hello world'
+>>> 'Hello World{}'.format('!')
+'Hello World!'
+>>> 'Hello {}{}{}{}{}!'.format('W', 'o', 'r', 'l', 'd')
+'Hello World!'
+>>> 'He{1}{1}{0} W{0}r{1}d!'.format('o', 'l')
+'Hello World!'
+>>> 'He{y}{y}{x} W{x}r{y}d!'.format(x = 'o', y = 'l')
+'Hello World!'
+>>> x = 555
+>>> '{}'.format(x)
+'555'
+>>> '{:<5}'.format(x)    # Left adjust with 5 spaces.
+'  555'
+>>> '{:05}'.format(x)    # Left adjust with 5 spaces zer filled.
+'00555'
+>>> '{:+05}'.format(x)
+'+0555'
+>>> x = 555 * 555
+>>> '{:,}'.format(x)
+'308,025'
+>>> '{:,}'.format(x).replace(',','.')       # replace , with .
+'308.025'
+>>> '{:f}'.format(x)
+'308025.000000'
+>>> '{:.3f}'.format(x)        # limit to 3 decimal places.
+'308025.000'
+>>> x = 55
+>>> '{:b}'.format(x)       # binary
+'110111'
+>>> '{:d}'.format(x)       # decimal
+'55'
+>>> '{:x}'.format(x)       # hexadecimal
+'37'
+>>> '{:o}'.format(x)       # octal
+'67'
+>>> f'{x:o}'               # f string formatting started from python version 3.6.x onwards
+'67'
+>>> f'{x:b}'
+'110111'
+>>> f'{x:d}'
+'55'
+>>> f'{x:x}'
+'37'
+>>> s = 'Hello World'
+>>> s.split()             # Splitting a string, by default use space for splitting. It will fold all spaces and newline before splitting.
+['Hello', 'World']
+>>> s.split('o')          # Splitting string at letter 'o'
+['Hell', ' W', 'rld']
+>>> l = s.split()
+>>> l
+['Hello', 'World']
+>>> ':'.join(l)           # Joining list with ':'
+'Hello:World'
+```
+## File I/O
+
+```python
+>>> f = open('a.txt')
+>>> for line in f:
+...   print(line)
+... 
+Hello World !
+
+Hello World !!
+
+>>> 
+>>> f = open('a.txt')            # Same as, f = open('a.txt', 'r')
+>>> for line in f:
+...   print(line.rstrip())      # Reading line by line stripping spaces and newline.
+... 
+Hello World !
+Hello World !!
+>>> f = open('a.txt', 'w')       # Open in write mode. Will clear the file.
+>>> f = open('a.txt', 'a')       # Open in append mode.
+>>> f = open('a.txt', 'r+')      # Open in read and write mode.
+>>> f = open('a.txt', 'r+b')      # b for binary, t for text mode
+```
+
+Line ending is represented by a '\n' (newline character) or single line feed (LF) character, ASCII 10 decimal, or zero A hex. This will take 1 byte. In other systems, a new line is represented by a carriage return (CR) character, ASCII 13 decimal, or zero D hex.
+
+```python
+>>> f = open('a.txt','rt')
+>>> o = open('b.txt','wt')         # Open in write and text mode.
+>>> for l in f:
+...   print(l.rstrip(), file=o)       # or use o.writelines(l), however print write with proper line endings.
+...   print('.', end='', flush=True)  # flush=True flushes output buffer. end='' avoid adding newline at the end.
+... 
+..>>> o.close()             # close the file to avoid any data loss.
+```
+
+Binary file write.
+
+```python
+def main():
+    i = open('pic-a.jpg', 'rb')
+    o = open('pic-b.jpg', 'wb')
+    while True:
+        buf = i.read(10240)
+        if buf:
+            o.write(buf)
+            print('.', end='', flush=True)
+        else: break
+    o.close()
+    
+if __name__ == '__main__': main()
 ```
 
 ## Reference
