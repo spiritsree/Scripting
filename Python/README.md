@@ -19,7 +19,8 @@
   * [Else](#else)
   * [Pass](#pass)
 * [Functions](#functions)
-* [Object](#object)
+* [Generators](#generators)
+* [Classes](#classes)
 * [Operators](#operators)
   * [Comparison Operators](#comparison-operators)
   * [Logical Operators](#logical-operators)
@@ -27,6 +28,7 @@
   * [Membership Operator](#membership-operator)
   * [Arithmetic Operator](#arithmetic-operator)
   * [Bitwise Operator](#bitwise-operator)
+* [Reference](#reference)
 
 
 ## Comment
@@ -231,7 +233,29 @@ def f3():
 f3()
 ```
 
-## Object
+## Generators
+
+Generators are a simple and powerful tool for creating iterators. They are written like regular functions but use the yield statement whenever they want to return data.
+
+```python
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+```
+
+```python
+>>> for char in reverse('golf'):
+...     print(char)
+...
+f
+l
+o
+g
+```
+
+## Classes
+
+Evertything in python is an object. A class is how an object is defined.
 
 ```python
 class Classname():
@@ -240,6 +264,25 @@ class Classname():
 
 x = Classname()
 x.function()
+```
+An instance of a class is called an object.
+
+```python
+class Dog:
+    kind = 'canine'         # class variable shared by all instances
+    def __init__(self, name):
+        self.name = name    # instance variable unique to each instance
+
+>>> d = Dog('Fido')         # Object
+>>> e = Dog('Buddy')
+>>> d.kind                  # shared by all dogs
+'canine'
+>>> e.kind                  # shared by all dogs
+'canine'
+>>> d.name                  # unique to d
+'Fido'
+>>> e.name                  # unique to e
+'Buddy'
 ```
 
 ## Operators
@@ -300,4 +343,9 @@ not in    x not in y    True if x not member of collection y
 <<		Shift left
 >>		Shift right
 ```
+
+## Reference
+
+* [Python Documentation](https://docs.python.org/3/)
+
 
