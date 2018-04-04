@@ -28,7 +28,7 @@
   * [Membership Operator](#membership-operator)
   * [Arithmetic Operator](#arithmetic-operator)
   * [Bitwise Operator](#bitwise-operator)
-*  [Exceptions](#exceptions)
+* [Exceptions](#exceptions)
   * [Handling Exceptions](#handling-exceptions)
 * [Reference](#reference)
 
@@ -382,28 +382,28 @@ not in    x not in y    True if x not member of collection y
 syntax:
 
 ```python
-try:                 # To catch the exception.
-	"code block"
-except <ExceptionName>:   # Handle a specif Exception.
-	"Code Block"
-except:            # Handle all remaining exceptions.
-	"Code Block"
+try:                 	 # To catch the exception.
+    "code block"
+except <ExceptionName>:  # Handle a specif Exception.
+    "Code Block"
+except:            	 # Handle all remaining exceptions.
+    "Code Block"
 else:
-	"Code Block"
+    "Code Block"
 ```
 
 ```python
 import sys
 
 def main():
-	try:
-		x = 5/0
-	except ValueError:
-		print('ValueError: Incorrect value')
-	except:
-		print(f'Unknown Error: {sys.exc_info()[1]}')
-	else:
-		print(x)
+    try:
+        x = 5/0
+    except ValueError:
+        print('ValueError: Incorrect value')
+    except:
+        print(f'Unknown Error: {sys.exc_info()[1]}')
+    else:
+        print(x)
 
 if __name__ == '__main__': main()
 ```
