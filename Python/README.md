@@ -247,7 +247,7 @@ x.function()
 
 ```
 ==    a == b      Equal
-!=		a != b      Not Equal
+!=    a != b      Not Equal
 <     a < b       Less than
 >     a > b       Greater than
 <=    a <= b      Less than equal
@@ -258,7 +258,7 @@ x.function()
 
 ```
 and     x and y     True is both x and y
-or			x or y      True if x or y
+or      x or y      True if x or y
 not     not x       Invert state
 ```
 
@@ -273,7 +273,7 @@ is not    x is not y    True if not the same object
 
 ```
 in        x in y        True if member of collection y
-not in		x not in y		True if x not member of collection y
+not in    x not in y    True if x not member of collection y
 ```
 
 ### Arithmetic Operator
