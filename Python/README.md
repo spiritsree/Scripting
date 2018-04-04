@@ -87,8 +87,9 @@ print(type(x))
 
 ## Data Structures
 
-Lists and Dictionary are mutable. You can modify the item in position.
-Tuples and Range are immutable.
+Lists and Dictionary are mutable. You can modify the items in position.</br>
+Tuples and Range are immutable.</br>
+Set in an unordered list.
 
 ```python
 list=['a1', 'a2', 'a3']
