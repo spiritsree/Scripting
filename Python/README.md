@@ -33,6 +33,7 @@
   * [Raising an Exception](#raising-an-exception)
 * [String Methods](#string-methods)
 * [File I/O](#file-io)
+* [Numeric Functions](#numeric-functions)
 * [Reference](#reference)
 
 
@@ -576,6 +577,28 @@ def main():
     o.close()
     
 if __name__ == '__main__': main()
+```
+
+## Numeric Functions
+
+```python
+>>> x=5
+>>> y=-6
+>>> z='7'
+>>> int(z)
+7
+>>> float(x)
+5.0
+>>> abs(y)
+6
+>>> divmod(x,y)
+(-1, -1)
+>>> divmod(x,x)
+(1, 0)
+>>> complex(x, 3)
+(5+3j)
+>>> 
+
 ```
 
 ## Reference
