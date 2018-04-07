@@ -33,7 +33,11 @@
   * [Raising an Exception](#raising-an-exception)
 * [String Methods](#string-methods)
 * [File I/O](#file-io)
-* [Numeric Functions](#numeric-functions)
+* [Built-in Functions](#built-in-functions)
+  * [Numeric Functions](#numeric-functions)
+  * [String Functions](#string-functions)
+  * [Container Functions](#container-functions)
+  * [Object and Class Functions](#object-and-class-functions)
 * [Reference](#reference)
 
 
@@ -578,27 +582,97 @@ def main():
     
 if __name__ == '__main__': main()
 ```
+## Built-in Functions
 
-## Numeric Functions
+### Numeric Functions
 
 ```python
 >>> x=5
 >>> y=-6
 >>> z='7'
->>> int(z)
+>>> int(z)          # int contructor to convert to integer.
 7
 >>> float(x)
 5.0
->>> abs(y)
+>>> abs(y)          # abs to get absolute value.
 6
->>> divmod(x,y)
+>>> divmod(x,y)     # divmod return both quotient and remainder.
 (-1, -1)
 >>> divmod(x,x)
 (1, 0)
->>> complex(x, 3)
+>>> complex(x, 3)    # complex function is used for complex numbers. j is the imaginary part.
 (5+3j)
 >>> 
 
+```
+
+### String Functions
+
+```python
+>>> s = 'hello world'
+>>> print(repr(s))       # repr gives best possible string representation.
+'hello world'
+>>> print(ascii('🖖'))   # gives the ascii value of a character.
+'\U0001f596'
+>>> print(chr(128406))   # prints the character represented by the unicode position.
+🖖
+>>> print(ord('🖖'))     # ord gives you the unicode position of a character.
+128406
+```
+
+### Container Functions
+
+```python
+>>> x = (1,2,3,4,5)
+>>> y = ( 0, 0, 0, 0 )
+>>> z = ( 0, 0, 1, 0 )
+>>> len(x)               # length of 
+5
+>>> reversed(x)          # gives reversed object.
+<reversed object at 0x103a48ba8>
+>>> list(reversed(x))
+[5, 4, 3, 2, 1]
+>>> sum(x)               # gives sum of the numbers.
+15
+>>> sum(x, 10)
+25
+>>> max(x)
+5
+>>> min(x)
+1
+>>> any(x)              # True is any value is not empty or zero
+True
+>>> any(y)
+False
+>>> any(z)
+True
+>>> all(z)
+False
+>>> all(x)
+True
+>>> zip(x, y)
+<zip object at 0x103a4f388>
+>>> list(zip(x, y))
+[(1, 0), (2, 0), (3, 0), (4, 0)]
+>>> x = ( 'a', 'b', 'c', 'd', 'e' )
+>>> enumerate(x)                     # enumerate gives you index and value.
+<enumerate object at 0x103a4de58>
+>>> list(enumerate(x))
+[(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd'), (4, 'e')]
+```
+
+### Object and Class Functions
+
+```python
+>>> x = 5
+>>> type(x)             # type gives the class of object.
+<class 'int'>
+>>> isinstance(x, int)  # isinstance check if the object is of a specific class.
+True
+>>> isinstance(x, float)
+False
+>>> id(x)               # id gives object id.
+4305295872
 ```
 
 ## Reference
