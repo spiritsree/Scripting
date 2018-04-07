@@ -325,11 +325,15 @@ Importing a module.
 
 ```python
 import <module>
+
+or
+
+from <module> import <function>
 ```
 e.g:
 
 ```python
-import sys
+import sys  # from sys import *
 
 v = sys.version_info
 print('Python Version is {}.{}.{}'.format(*v))
