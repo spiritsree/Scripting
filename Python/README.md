@@ -3,7 +3,6 @@
 ## Contents
 
 * [Comment](#comment)
-* [Module Import](#module-import)
 * [Printing](#printing)
 * [Variable Assignment](#variable-assignment)
 * [Variable Interpolation](#variable-interpolation)
@@ -21,6 +20,7 @@
 * [Functions](#functions)
 * [Generators](#generators)
 * [Classes](#classes)
+* [Modules](#modules)
 * [Operators](#operators)
   * [Comparison Operators](#comparison-operators)
   * [Logical Operators](#logical-operators)
@@ -47,12 +47,6 @@ Comment is starting with a #.
 
 ```python
 # This is a comment
-```
-
-## Module Import
-
-```python
-import <module>
 ```
 
 ## Printing
@@ -323,6 +317,59 @@ def main():
     print(f'{y.Name()}, {y.Type()}')
 
 if __name__ == '__main__': main()
+```
+
+## Modules
+
+Importing a module.
+
+```python
+import <module>
+```
+e.g:
+
+```python
+import sys
+
+v = sys.version_info
+print('Python Version is {}.{}.{}'.format(*v))
+```
+Module Example.
+
+```python
+>>> import sys
+>>> sys.version_info
+sys.version_info(major=3, minor=6, micro=5, releaselevel='final', serial=0)
+>>> sys.platform
+'darwin'
+>>>
+>>> import os
+>>> os.name
+'posix'
+>>> os.getenv('PATH')     # get path env variable.
+'/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+>>> os.getcwd()           # Current working directory.
+'/Users/gsree/Documents/Python'
+>>> os.urandom(10)        # Get random string in hex bytes.
+b'\xa5\xb2)\x10"\xe6\xce\xe8\xc2\x17'
+>>> os.urandom(10).hex()  
+'417249cb1b85e2437cec'
+>>>
+>>> import random
+>>> random.randint(1, 100000)   # get random number between 2 numbers.
+92867
+>>> x = list(range(25))
+>>> x
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+>>> random.shuffle(x)            # Shuffles the list.
+>>> x
+[7, 16, 13, 14, 23, 18, 5, 0, 10, 6, 20, 24, 2, 9, 11, 1, 22, 19, 4, 21, 15, 3, 17, 8, 12]
+>>> 
+>>> now = datetime.datetime.now()
+>>> print(now)
+2018-04-07 14:06:30.477743
+>>> print(now.year, now.month, now.day, now.hour, now.minute, now.second, now.microsecond)
+2018 4 7 14 6 30 477743
 ```
 
 ## Operators
