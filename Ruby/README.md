@@ -17,6 +17,7 @@ $ irb
 * [Variable Assignment](#variable-assignment)
 * [Variable Interpolation](#variable-interpolation)
 * [Type of a Value](#type-of-a-value)
+* [Data Structures](#data-structures)
 * [Documentation](#documentation)
 
 ## Comment
@@ -92,6 +93,23 @@ irb(main):012:0* { 1 => 'a', 2 => 'b' }.class
 => Hash
 irb(main):015:0> (1..5).class
 => Range
+```
+
+## Data Structures
+
+Arrays - An ordered, integer-indexed collection of objects.
+
+```ruby
+irb(main):001:0> a = []
+=> []
+irb(main):002:0> a = [1, 2, 3]
+=> [1, 2, 3]
+irb(main):004:0> a[0]
+=> 1
+irb(main):005:0> a << 4      # Append to an array. same as a.push(4)
+=> [1, 2, 3, 4]
+irb(main):006:0> a[4]        # Returns nil if the position does not have value.
+=> nil
 ```
 
 ## Documentation
