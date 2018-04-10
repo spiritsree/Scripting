@@ -29,7 +29,12 @@ $ irb
   * [Until Loop](#until-loop)
   * [For Loop](#for-loop)
   * [Iterators](#iterators)
-*
+* [Control Flow](#control-flow)
+  * [break](#break)
+  * [next](#next)
+  * [redo](#redo)
+  * [retry](#retry)
+* 
 * [Documentation](#documentation)
 
 ## Comment
@@ -381,6 +386,74 @@ Hello
   puts 'Hello ' + i.to_s
 end
 ```
+## Control Flow
+
+### break
+
+break - Terminate the whole loop.
+
+```ruby
+x = 0
+loop do
+  x += 1
+  puts 'Count ' + x.to_s
+  break if x >= 5
+end
+```
+
+### next
+
+next - Jump to the next loop.
+
+```ruby
+x = 0
+loop do
+  x += 1
+  next if x == 3
+  puts 'Count ' + x.to_s
+  break if x >= 5
+end
+```
+
+### redo
+
+redo - Redo this loop.
+
+```ruby
+a = [ "One", "Two", "Three"]
+count = 0
+a.each do |element|
+  p element
+  if element == 'Two'
+    count += 1
+    redo if count < 3
+  end
+end
+```
+
+### retry
+
+retry - Start the whole loop over.
+
+```ruby
+def test
+  attempt_again = true
+  p 'Testing'
+  begin
+    # This is the point where the control flow jumps
+    p 'About to crash'
+    raise 'Boom'
+  rescue Exception => e
+    if attempt_again
+      attempt_again = false
+      retry       
+    end
+  end
+end
+
+test
+```
+
 
 
 ## Documentation
