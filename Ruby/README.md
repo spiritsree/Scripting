@@ -168,7 +168,7 @@ Ranges
 
 ## Conditionals
 
-### if/if..else
+### if / if..else
 
 Syntax:
 
@@ -235,7 +235,7 @@ boolean?code1:code2
 puts a==1? "one":'not one'
 ```
 
-## or/or..equal
+## or / or..equal
 
 Syntax:
 
