@@ -19,10 +19,10 @@ $ irb
 * [Type of a Value](#type-of-a-value)
 * [Data Structures](#data-structures)
 * [Conditionals](#conditionals)
-  * [if/if..else](#if-if-else)
+  * [if/if..else](#if-else)
   * [case](#case)
   * [ternary operator](#ternary-operator)
-  * [or/or..equal](#or-or-equal)
+  * [or/or..equal](#or-equal)
 * [Loops](#loops)
   * [Loop](#loop)
   * [While Loop](#while-loop)
@@ -168,7 +168,7 @@ Ranges
 
 ## Conditionals
 
-### if / if..else
+### if else
 
 Syntax:
 
@@ -235,7 +235,7 @@ boolean?code1:code2
 puts a==1? "one":'not one'
 ```
 
-## or / or..equal
+## or equal
 
 Syntax:
 
