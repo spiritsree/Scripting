@@ -31,7 +31,6 @@
 * [Exceptions](#exceptions)
   * [Handling Exceptions](#handling-exceptions)
   * [Raising an Exception](#raising-an-exception)
-* [String Methods](#string-methods)
 * [File I/O](#file-io)
 * [Built-in Functions](#built-in-functions)
   * [Numeric Functions](#numeric-functions)
@@ -503,84 +502,7 @@ try:
 except TypeError as e:
     print(f'Value Error: {e}')
 ```
-## String Methods
 
-Strings and first class objects in python 3.</br>
-Strings are immutable.
-
-These are the common methods for a string.
-
-```python
->>> 'hello world!'.upper()
-'HELLO WORLD!'
->>> 'hello world!'.capitalize()
-'Hello world!'
->>> 'hello world!'.title()
-'Hello World!'
->>> 'Hello World!'.swapcase()
-'hELLO wORLD!'
->>> 'Hello World!'.lower()
-'hello world!'
->>> 'Hello World!'.casefold()    # Similar to lower() but more strong.
-'hello world!'
->>> s1 = "hello"
->>> s2 = "world"
->>> s1 + ' ' +  s2            # Concatenation
-'hello world'
->>> 'Hello World{}'.format('!')
-'Hello World!'
->>> 'Hello {}{}{}{}{}!'.format('W', 'o', 'r', 'l', 'd')
-'Hello World!'
->>> 'He{1}{1}{0} W{0}r{1}d!'.format('o', 'l')
-'Hello World!'
->>> 'He{y}{y}{x} W{x}r{y}d!'.format(x = 'o', y = 'l')
-'Hello World!'
->>> x = 555
->>> '{}'.format(x)
-'555'
->>> '{:<5}'.format(x)    # Left adjust with 5 spaces.
-'  555'
->>> '{:05}'.format(x)    # Left adjust with 5 spaces zer filled.
-'00555'
->>> '{:+05}'.format(x)
-'+0555'
->>> x = 555 * 555
->>> '{:,}'.format(x)
-'308,025'
->>> '{:,}'.format(x).replace(',','.')       # replace , with .
-'308.025'
->>> '{:f}'.format(x)
-'308025.000000'
->>> '{:.3f}'.format(x)        # limit to 3 decimal places.
-'308025.000'
->>> x = 55
->>> '{:b}'.format(x)       # binary
-'110111'
->>> '{:d}'.format(x)       # decimal
-'55'
->>> '{:x}'.format(x)       # hexadecimal
-'37'
->>> '{:o}'.format(x)       # octal
-'67'
->>> f'{x:o}'               # f string formatting started from python version 3.6.x onwards
-'67'
->>> f'{x:b}'
-'110111'
->>> f'{x:d}'
-'55'
->>> f'{x:x}'
-'37'
->>> s = 'Hello World'
->>> s.split()             # Splitting a string, by default use space for splitting. It will fold all spaces and newline before splitting.
-['Hello', 'World']
->>> s.split('o')          # Splitting string at letter 'o'
-['Hell', ' W', 'rld']
->>> l = s.split()
->>> l
-['Hello', 'World']
->>> ':'.join(l)           # Joining list with ':'
-'Hello:World'
-```
 ## File I/O
 
 ```python
@@ -658,6 +580,83 @@ if __name__ == '__main__': main()
 ```
 
 ### String Functions
+
+Strings are first class objects in python 3.</br>
+Strings are immutable.
+
+These are the common methods for a string.
+
+```python
+>>> 'hello world!'.upper()
+'HELLO WORLD!'
+>>> 'hello world!'.capitalize()
+'Hello world!'
+>>> 'hello world!'.title()
+'Hello World!'
+>>> 'Hello World!'.swapcase()
+'hELLO wORLD!'
+>>> 'Hello World!'.lower()
+'hello world!'
+>>> 'Hello World!'.casefold()    # Similar to lower() but more strong.
+'hello world!'
+>>> s1 = "hello"
+>>> s2 = "world"
+>>> s1 + ' ' +  s2            # Concatenation
+'hello world'
+>>> 'Hello World{}'.format('!')
+'Hello World!'
+>>> 'Hello {}{}{}{}{}!'.format('W', 'o', 'r', 'l', 'd')
+'Hello World!'
+>>> 'He{1}{1}{0} W{0}r{1}d!'.format('o', 'l')
+'Hello World!'
+>>> 'He{y}{y}{x} W{x}r{y}d!'.format(x = 'o', y = 'l')
+'Hello World!'
+>>> x = 555
+>>> '{}'.format(x)
+'555'
+>>> '{:<5}'.format(x)    # Left adjust with 5 spaces.
+'  555'
+>>> '{:05}'.format(x)    # Left adjust with 5 spaces zer filled.
+'00555'
+>>> '{:+05}'.format(x)
+'+0555'
+>>> x = 555 * 555
+>>> '{:,}'.format(x)
+'308,025'
+>>> '{:,}'.format(x).replace(',','.')       # replace , with .
+'308.025'
+>>> '{:f}'.format(x)
+'308025.000000'
+>>> '{:.3f}'.format(x)        # limit to 3 decimal places.
+'308025.000'
+>>> x = 55
+>>> '{:b}'.format(x)       # binary
+'110111'
+>>> '{:d}'.format(x)       # decimal
+'55'
+>>> '{:x}'.format(x)       # hexadecimal
+'37'
+>>> '{:o}'.format(x)       # octal
+'67'
+>>> f'{x:o}'               # f string formatting started from python version 3.6.x onwards
+'67'
+>>> f'{x:b}'
+'110111'
+>>> f'{x:d}'
+'55'
+>>> f'{x:x}'
+'37'
+>>> s = 'Hello World'
+>>> s.split()             # Splitting a string, by default use space for splitting. It will fold all spaces and newline before splitting.
+['Hello', 'World']
+>>> s.split('o')          # Splitting string at letter 'o'
+['Hell', ' W', 'rld']
+>>> l = s.split()
+>>> l
+['Hello', 'World']
+>>> ':'.join(l)           # Joining list with ':'
+'Hello:World'
+```
 
 ```python
 >>> s = 'hello world'
