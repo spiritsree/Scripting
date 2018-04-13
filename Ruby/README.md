@@ -34,7 +34,8 @@ $ irb
   * [next](#next)
   * [redo](#redo)
   * [retry](#retry)
-* 
+* [Methods](#methods)
+* [Classes](#classes)
 * [Documentation](#documentation)
 
 ## Comment
@@ -454,7 +455,204 @@ end
 test
 ```
 
+## Methods
 
+Methods are functions in ruby.
+
+Syntax:
+
+```ruby
+def some_name
+    code block
+end
+
+some_name
+```
+
+```ruby
+def some_name(args)
+    code block
+end
+
+some_name(args)
+```
+
+```ruby
+irb(main):001:0> def welcome             # defining method
+irb(main):002:1>    puts 'Hello World!'
+irb(main):003:1> end
+=> :welcome
+irb(main):004:0> welcome                # calling the method.
+Hello World!
+=> nil
+
+irb(main):001:0> def welcome             
+irb(main):002:1>    return 'Hello World!'  # return gives the string as return value instead on nil.
+irb(main):003:1> end
+=> :welcome
+irb(main):004:0> welcome                
+"Hello World!"
+```
+
+e.g:
+
+```ruby
+def welcome(name="World!")
+  return "Hello " + name
+end
+
+puts welcome('Mr. X')
+greet = welcome
+puts greet
+```
+
+## Classes
+
+Classes are back-bone of OOP. Class define what an object is and what an object can do.
+
+Syntax:
+
+```ruby
+class SomeName
+    .....
+end
+
+var = SomeName.new
+```
+
+e.g:
+
+```ruby
+irb(main):001:0> class Animal
+irb(main):002:1>   def make_noise
+irb(main):003:2>     return "moo!"
+irb(main):004:2>   end
+irb(main):005:1> end
+=> :make_noise
+irb(main):006:0> 
+irb(main):007:0* animal = Animal.new         # instance - an object created from class.
+=> #<Animal:0x007f8a1a849a08>
+irb(main):008:0> animal.make_noise
+=> "moo!"
+```
+
+```ruby
+#!/usr/bin/env ruby
+
+class Animal
+  def set_noise(noise='Moo!')   # setter method
+    @noise = noise              # @noise is an instance variable and be preserved within the instance.
+  end
+  def make_noise                # getter method
+    @noise
+  end
+end
+
+a1 = Animal.new
+a1.set_noise('Quack')
+puts a1.make_noise
+
+a2 = Animal.new
+a2.set_noise
+puts a2.make_noise
+```
+
+Output:
+
+```
+Quack
+Moo
+```
+
+**Getter Method**
+
+Syntax:
+
+```ruby
+attr_reader :name
+
+OR
+
+def name
+  @name
+end
+```
+
+**Setter Method**
+
+Syntax:
+
+```ruby
+attr_writer :name
+
+OR
+
+def name=(value)
+    @name = value
+end
+```
+
+**Getter/Setter Methods**
+
+Syntax:
+
+```ruby
+attr_accessor :name
+
+OR
+
+def name
+  @name
+end
+
+def name=(value)
+  @name = value
+end
+```
+
+**Initialize method**
+
+Initialize method will get initialized when a new class instance in called using .new method.
+
+Syntax:
+
+```ruby
+class SomeName
+    def initialize(var)
+        @var = var
+    end
+end
+
+SomeName.new(var)
+```
+
+**Class Methods**
+
+A method that can be called on a class, even without and instance of the class.
+
+Syntax:
+
+```ruby
+class ClassName
+    def self.method_name
+        .....
+    end
+end
+
+ClassName.method_name
+```
+
+**Class inheritence**
+
+In ruby, class can inherit only from one another class.
+
+Syntax:
+
+```ruby
+class SubClassName < ClassName
+
+end
+```
 
 ## Documentation
 
