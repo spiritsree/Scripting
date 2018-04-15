@@ -922,6 +922,26 @@ File writing.
 => nil
 ```
 
+```ruby
+>>  fh = File.new('new_file.txt', 'w')
+=> #<File:new_file.txt>
+>> fh.pos = 20
+=> 20
+>> fh.write('hello')              # Jumping to a nil position and writing will fill nill char to the start of the position.
+=> 5
+>> fh.close
+=> nil
+>>  fh = File.new('new_file.txt', 'r')
+=> #<File:new_file.txt>
+>> fh.gets
+=> "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000hello"
+>> fh.gets
+=> nil
+>> fh.close
+=> nil
+>> 
+```
+
 Reading file.
 
 ```ruby
@@ -937,6 +957,30 @@ Reading file.
 => "Hello World\n"
 >> fh.gets
 => nil
+>> fh.rewind                # rewind sends the pointer position to 0 and also resets lineno.
+=> 0
+>> fh.pos
+=> 0
+>> fh.read(5)
+=> "Hello"
+>> fh.pos
+=> 5
+>> fh.read(7)
+=> " World\n"
+>> fh.eof?                    # eof? boolean operation to check end of file.
+=> false
+>> fh.pos = 15                # pos can set the position to beyond the end of file.
+=> 15
+>> fh.read(5)
+=> "lo Wo"
+>> fh.pos += 5
+=> 20
+>> fh.lineno
+=> 0
+>> fh.gets
+=> "d\n"
+>> fh.lineno                     # lineno is used as a counter for gets. It is not the actual lineno.
+=> 1
 >> fh.close
 => nil
 >> 
