@@ -47,6 +47,7 @@ $ irb
   * [Numeric Methods](#numeric-methods)
   * [String Methods](#string-methods)
   * [Container Methods](#container-methods)
+  * [Boolean Methods](#boolean-methods)
 * [Documentation](#documentation)
 
 ## Comment
@@ -917,9 +918,171 @@ irb(main):002:0> fh.close                               # need to close the file
 
 ### Numeric Methods
 
+```ruby
+>> 1.to_s       # to_s, converts to string.
+=> "1"
+>> "1".to_i     # to_i, converts to integer.
+=> 1
+>> 1.to_f       # to_f, converts to float.
+=> 1.0
+>> 1.to_c       # to_c, converts to complex number.
+=> (1+0i)
+>> -1.abs       # abs, coverts to absolute value.
+=> 1
+>> 1.next       # next, gives the next value.
+=> 2
+>> 1.55.round   #  round, rounds to the nearest value.
+=> 2
+>> 1.22.ceil    # ceil, rounds to upper value.
+=> 2
+>> 1.55.floor   # floor, rounds to lower value.
+=> 1
+```
+
 ### String Methods
 
+```ruby
+>> 'Hello'.reverse    # reverse, reverses the chars in a string.
+=> "olleH"
+>> "abc".capitalize   # capitalize, coverts first char to capital.
+=> "Abc"
+>> "abc".upcase       # upcase, converts all chars to capital.
+=> "ABC"
+>> "ABC".downcase     # downcase, converts all chars to  lower case.
+=> "abc"
+>> "a".next
+=> "b"
+>> 'Hello'.length     # length, gives length of the string.
+=> 5
+>> 'Hello'.reverse.upcase   # daisy chaining is possible with methods.
+=> "OLLEH"
+```
+
 ### Container Methods
+
+**Array**
+
+```ruby
+>> array = [ 2, 5, 3, 1, 4 ]
+=> [2, 5, 3, 1, 4]
+>> array.join                     # join, joins the array.
+=> "25314"
+>> array.join(',')
+=> "2,5,3,1,4"
+>> array.length                   # length, gives the number of elements in an array.
+=> 5
+>> array.reverse                  # reverse, reverses array.
+=> [5, 4, 3, 2, 1]
+>> array.sort                     # sort, sorts the elements.
+=> [1, 2, 3, 4, 5]
+>> array.sort!                    # '!' forces the operation to save the result.
+=> [1, 2, 3, 4, 5]
+>> array.pop                      # pop, takes the last element and return.
+=> 5
+>> array.shift                    # shift, takes the first element and return.
+=> 1
+>> array.push(6)                  # push, adds a new element at the end or array.
+=> [2, 3, 4, 6]
+>> array.unshift(0)               # unshift adds a new element at the start of array.
+=> [0, 2, 3, 4, 6]
+>> array.inspect                  # inspect returns the array in a nice format (string).
+=> "[0, 2, 3, 4, 6]"
+>> puts array
+0
+2
+3
+4
+6
+=> nil
+>> puts array.inspect
+[0, 2, 3, 4, 6]
+=> nil
+>> "a,b,c,d,e".split(',')        # split, splits on the character and returns an array.
+=> ["a", "b", "c", "d", "e"]
+>> [1, 1, 2, 4, 3, 2, 5].uniq    # uniq, returns the array with uniq elements.
+=> [1, 2, 4, 3, 5]
+>> [1, 2, 4, 3, 5].delete(1)     # delete, deletes the value from and return.
+=> 1
+>> [1, 2, 4, 3, 5].delete_at(1)  # delete_at, deletes value at index and return the element.
+=> 2
+>> [1, 2, 3] + [ 'a', 'b' ]
+=> [1, 2, 3, "a", "b"]
+>> [1, 2, 3] - [2]               # same as delete.
+=> [1, 3]
+>> array.clear                   # clear, clears the array.
+=> []
+>> arr_a = [ 'x', 'xxxxx', 'xxx', 'xxxx', 'xx' ]
+=> ["x", "xxxxx", "xxx", "xxxx", "xx"]
+>> arr_a.sort
+=> ["x", "xx", "xxx", "xxxx", "xxxxx"]
+>> arr_a.sort.reverse
+=> ["xxxxx", "xxxx", "xxx", "xx", "x"]
+```
+
+**Hash**
+
+```ruby
+>> hash = { "a" => 1, "b" => 2 }
+=> {"a"=>1, "b"=>2}
+>> hash.length
+=> 2
+>> hash.size                      # size and length gives number of elements.
+=> 2
+>> hash.to_a                      # to_a converts to an array.
+=> [["a", 1], ["b", 2]]
+>> hash.keys                      # keys, will give keys in a hash in the form of array.
+=> ["a", "b"]
+>> hash.values                    # values, will give values in a hash.
+=> [1, 2]
+>> hash.clear
+=> {}
+```
+
+**Iterator**
+
+```ruby
+>> (1..10).begin                # begin gives the first value.
+=> 1
+>> (1..10).end                  # end gives the last value.
+=> 10
+>> (1..10).first
+=> 1
+>> (1..10).last
+=> 10
+>> a = (1..10)
+=> 1..10
+>> b = [*a]                     # * is splat operator. expands the range.
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+### Boolean Methods
+
+```ruby
+>> x = 1
+=> 1
+>> z = nil
+=> nil
+>> x.nil?
+=> false
+>> z.nil?
+=> true
+>> 2.between?(1,5)
+=> true
+>> [1, 2, 3].empty?
+=> false
+>> [].empty?
+=> true
+>> {}.empty?
+=> true
+>> [1, 2, 3].include?(2)
+=> true
+>> { 'a' => 1, 'b' => 2 }.has_key?('b')
+=> true
+>> { 'a' => 1, 'b' => 2 }.has_value?('4')
+=> false
+>> ('a'..'g').include?('f')
+=> true
+```
 
 ## Documentation
 
