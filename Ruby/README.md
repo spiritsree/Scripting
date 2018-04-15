@@ -36,6 +36,17 @@ $ irb
   * [retry](#retry)
 * [Methods](#methods)
 * [Classes](#classes)
+* [Modules](#modules)
+* [Operators](#operators)
+  * [Comparison Operators](#comparison-operators)
+  * [Logical Operators](#logical-operators)
+  * [Arithmetic Operator](#arithmetic-operator)
+  * [Bitwise Operator](#bitwise-operator)
+* [File I/O](#file-I/O)
+* [Built-in Methods](#built-in-methods)
+  * [Numeric Methods](#numeric-methods)
+  * [String Methods](#string-methods)
+  * [Container Methods](#container-methods)
 * [Documentation](#documentation)
 
 ## Comment
@@ -653,6 +664,100 @@ class SubClassName < ClassName
 
 end
 ```
+
+**Subclass Overriding**
+
+```ruby
+class Animal
+ def initialize(name, color)
+    @name = name
+    @color = color
+  end
+ def color
+   return "#{@color}"
+  end
+end
+
+class Cow < Animal
+  def color                                  # This overrides the super class method.
+    scolor = super                           # use super to access the super class.
+    puts "Cow's color is #{@color} and parent color is #{scolor}"
+  end
+end
+
+animal = Cow.new('Maisie', 'Black')
+animal.color
+```
+
+## Modules
+
+
+## Operators
+
+### Comparison Operators
+
+```
+==    a == b      Equal
+!=    a != b      Not Equal
+<     a < b       Less than
+>     a > b       Greater than
+<=    a <= b      Less than equal
+>=    a >= b      Greater than equal
+<=>   a <=>       Spaceship operator
+```
+
+```ruby
+irb(main):001:0> 1 <=> 2     # Spaceship operator is used for sorting based on value comparison.
+=> -1
+irb(main):002:0> 2 <=> 2
+=> 0
+irb(main):003:0> 2 <=> 1
+=> 1
+```
+
+### Logical Operators
+
+```
+and     x and y     True is both x and y
+&&      x && y      True is both x and y. Higher precedence.
+or      x or y      True if x or y
+||      x || y      True if x or y. Higher precedence.
+not     not x       Invert state
+!       !x          Invert state. Higher precedence.
+```
+
+### Arithmetic Operator
+
+```
++		Addition
+-		Subtraction
+*		Multiplication
+/		Division
+%		(Remainder) Modulo
+**		Exponent
+-		Unary negative
++		Unary positive
+```
+
+### Bitwise Operator
+
+```
+&		AND
+|		OR
+^		XOR
+<<		Shift left
+>>		Shift right
+```
+
+## File I/O
+
+## Built-in Methods
+
+### Numeric Methods
+
+### String Methods
+
+### Container Methods
 
 ## Documentation
 
