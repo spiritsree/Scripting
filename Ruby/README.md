@@ -1015,8 +1015,25 @@ irb(main):002:0> fh.close                               # need to close the file
 => ["x", "xxxxx", "xxx", "xxxx", "xx"]
 >> arr_a.sort
 => ["x", "xx", "xxx", "xxxx", "xxxxx"]
+>> arr_a.sort {|v1,v2| v1 <=> v2}          # actual sort operation.
+=> ["x", "xx", "xxx", "xxxx", "xxxxx"]
 >> arr_a.sort.reverse
 => ["xxxxx", "xxxx", "xxx", "xx", "x"]
+>> arr_a.sort {|v1,v2| v2 <=> v1}
+=> ["xxxxx", "xxxx", "xxx", "xx", "x"]
+>> arr_a.sort {|v1,v2| v2.length <=> v1.length}
+=> ["xxxxx", "xxxx", "xxx", "xx", "x"]
+>> arr_a.sort_by {|v| v.length}
+=> ["x", "xx", "xxx", "xxxx", "xxxxx"]
+>> array = [1, 2, 3, 4, 5]
+=> [1, 2, 3, 4, 5]
+>> array.collect
+>> array.collect {|i| i * 3 }       # collect/map works on array, hash, range and return array with same number of elements.
+=> [3, 6, 9, 12, 15]
+>> array.map {|i| i * i }
+=> [1, 4, 9, 16, 25]
+>> [ 'a', 'b', 'c' ].map { |i| i.capitalize if i == 'c' }   
+=> [nil, nil, "C"]
 ```
 
 **Hash**
@@ -1036,6 +1053,30 @@ irb(main):002:0> fh.close                               # need to close the file
 => [1, 2]
 >> hash.clear
 => {}
+>> a = {'a' => 1, 'b' => 2 } 
+=> {"a"=>1, "b"=>2}
+>> b = {'b' => 3, 'c' => 4}
+=> {"c"=>3, "d"=>4}
+>> a.merge(b)                     # merge, merges two hashes and operate only on hashes.
+=> {"a"=>1, "b"=>3, "c"=>4}
+>> b.merge(a)
+=> {"b"=>2, "c"=>4, "a"=>1}
+>> a.merge(b) { |key,old,new| old }
+=> {"a"=>1, "b"=>2, "c"=>4}
+>> a.merge(b) { |key,old,new| old < new ? old : new}
+=> {"a"=>1, "b"=>2, "c"=>4}
+>> {'a' => 1, 'b' => 2}.map {|k,v| k }     # collect/map works on array, hash, range and return array with same number of elements.
+=> ["a", "b"]
+>> {'a' => 1, 'b' => 2}.map {|k,v| v }
+=> [1, 2
+>> {'a' => 1, 'b' => 2}.map {|k,v| "#{k} = #{v}" }
+=> ["a = 1", "b = 2"]]
+>> hash = { "c" => 3, "a" => 1, "b" => 2 }
+=> {"c"=>3, "a"=>1, "b"=>2}
+>> hash.sort                         # sort on hash converts it to array.
+=> [["a", 1], ["b", 2], ["c", 3]]
+>> hash.sort {|item1,item2| item2[0] <=> item1[0]}   # reverse sort.
+=> [["c", 3], ["b", 2], ["a", 1]]
 ```
 
 **Iterator**
@@ -1065,6 +1106,12 @@ irb(main):002:0> fh.close                               # need to close the file
 => [3, 6, 9]
 >> [*1..10].delete_if {|i| i % 3 == 0}
 => [1, 2, 4, 5, 7, 8, 10]
+>> (1..5).map {|i| i * i}         # collect/map works on array, hash, range and return array with same number of elements.
+=> [1, 4, 9, 16, 25]
+>> (1..10).inject {|memo,n| memo + n }   # memo is an accumulator, it collects the result. memo is initialized with 1.
+=> 55
+>> (1..10).inject(100) {|memo,n| memo + n }  # in this memo is initialized with 100.
+=> 155
 ```
 
 ### Boolean Methods
