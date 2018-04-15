@@ -699,6 +699,139 @@ animal.color
 
 ## Modules
 
+Modules are wrappers around ruby code.</br>
+Modules can't be instantiated.</br>
+Modules are used in conjunction with classes.
+
+Syntax:
+
+```ruby
+module ModuleName
+    ....
+end
+
+class ClassName
+    include 'ModuleName'
+    ....
+end
+
+OR
+
+module ModuleName
+    class ClassName
+        ....
+    end
+end
+
+something = ModuleName::ClassName.new      # namespacing, to avoid conflicting classes.
+```
+
+Ruby allows classes to inherit from one superclass. Mixin helps to avoid this issue by including modules.
+
+```ruby
+module ContactInfo
+  attr_accessor :first_name, :last_name, :city, :state, :zip_code
+  
+  def full_name
+    return @first_name + " " + @last_name
+  end
+  
+  def city_state_zip
+    csz = @city
+    csz +=", #{@state}" if @state
+    csz +=" #{@zip_code}" if @zip_code
+    return csz
+  end
+end
+
+class Person
+  include ContactInfo
+end
+
+class Teacher
+  include ContactInfo
+  attr_accessor :lesson_plans
+end
+
+class Student < Person
+  attr_accessor :books, :grades
+end
+```
+You can use the above module as below.
+
+```ruby
+irb(main):001:0> load './person.rb'
+=> true
+irb(main):002:0> person = Person.new
+=> #<Person:0x007fef5f04d7a0>
+irb(main):003:0> person.first_name='Sreejith'
+=> "Sreejith"
+irb(main):004:0> person.last_name='G'
+=> "G"
+irb(main):005:0> person.full_name
+=> "Sreejith G"
+```
+
+**load**
+
+Loads the source file every single time its called.
+
+```ruby
+irb(main):001:0> load './person.rb'
+=> true
+irb(main):002:0> load './person.rb'
+=> true
+```
+
+**require**
+
+Loads the source file only once.
+
+```ruby
+irb(main):001:0> require './person.rb'
+=> true
+irb(main):002:0> require './person.rb'
+=> false
+```
+
+**include**
+
+Includes modules, nothing to do with files.
+
+```ruby
+class Person
+  include ContactInfo
+end
+```
+
+Enumerables as Mixins.
+
+```ruby
+class Animal
+ include Enumerable
+ 
+ attr_accessor :animals
+ 
+ def initialize
+  @animals = []
+ end
+ 
+ def each
+  @animals.each { |animal| yield animal }
+ end
+end
+```
+
+```ruby
+irb(main):001:0> require './animal.rb'
+=> true
+irb(main):002:0> animal = Animal.new
+=> #<Animal:0x007ffe9806c888 @animals=[]>
+irb(main):003:0> animal.animals = ['cat', 'dog', 'fish']
+=> ["cat", "dog", "fish"]
+irb(main):004:0> animal.select { |a| a.length > 3 }
+=> ["fish"]
+```
 
 ## Operators
 
@@ -778,6 +911,7 @@ irb(main):001:0> fh = File.new('new_file.txt', 'w')     # File.new initializes a
 irb(main):002:0> fh.close                               # need to close the file handle explicitly.
 => nil
 ```
+
 
 ## Built-in Methods
 
