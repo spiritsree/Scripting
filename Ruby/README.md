@@ -42,7 +42,7 @@ $ irb
   * [Logical Operators](#logical-operators)
   * [Arithmetic Operator](#arithmetic-operator)
   * [Bitwise Operator](#bitwise-operator)
-* [File I/O](#file-i/o)
+* [File I/O](#file-io)
 * [Built-in Methods](#built-in-methods)
   * [Numeric Methods](#numeric-methods)
   * [String Methods](#string-methods)
@@ -757,7 +757,7 @@ not     not x       Invert state
 >>		Shift right
 ```
 
-## File I/O
+## File IO
 
 `__FILE__` refers to the file in which the handle is called.
 
