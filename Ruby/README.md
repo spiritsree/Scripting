@@ -913,6 +913,20 @@ irb(main):002:0> fh.close                               # need to close the file
 => nil
 ```
 
+File access modes.
+
+```
+r   - Read from start. file must exist.
+w   - Truncate/write from start.
+a   - Append/Write from end.
+```
+
+```ruby
+File.open('new_file.txt', 'r') do |file|            # second argument is mode, r, r+, w, w+, a, a+
+    ....                                            # doesn't need and explicit close.
+end
+```
+
 
 ## Built-in Methods
 
