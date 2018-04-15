@@ -42,7 +42,7 @@ $ irb
   * [Logical Operators](#logical-operators)
   * [Arithmetic Operator](#arithmetic-operator)
   * [Bitwise Operator](#bitwise-operator)
-* [File I/O](#file-I/O)
+* [File I/O](#file-i/o)
 * [Built-in Methods](#built-in-methods)
   * [Numeric Methods](#numeric-methods)
   * [String Methods](#string-methods)
