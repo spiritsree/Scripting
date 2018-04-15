@@ -905,12 +905,41 @@ irb(main):003:0>  File.dirname(__FILE__)
 irb(main):004:0>  File.basename(__FILE__)
 => "(irb)"
 ```
+File writing.
 
 ```ruby
-irb(main):001:0> fh = File.new('new_file.txt', 'w')     # File.new initializes a file handle and creates if the file does not exist.
+>> fh = File.new('new_file.txt', 'w')     # File.new initializes a file handle and creates if the file does not exist.
 => #<File:new_file.txt>
-irb(main):002:0> fh.close                               # need to close the file handle explicitly.
+>> fh.puts 'Hello World'
 => nil
+>> fh.print "Hello World\n"
+=> nil
+>> fh.write "Hello World\n"
+=> 12
+>> fh << "Hello World\n"
+=> #<File:new_file.txt>
+>> fh.close                               # need to close the file handle explicitly. Write happen when the file is closed
+=> nil
+```
+
+Reading file.
+
+```ruby
+>> fh = File.new('new_file.txt', 'r')
+=> #<File:new_file.txt>
+>> fh.gets
+=> "Hello World\n"
+>> fh.gets.chomp
+=> "Hello World"
+>> fh.read(12)
+=> "Hello World\n"
+>> fh.gets
+=> "Hello World\n"
+>> fh.gets
+=> nil
+>> fh.close
+=> nil
+>> 
 ```
 
 File access modes.
