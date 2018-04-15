@@ -1051,8 +1051,20 @@ irb(main):002:0> fh.close                               # need to close the file
 => 10
 >> a = (1..10)
 => 1..10
->> b = [*a]                     # * is splat operator. expands the range.
+>> b = [*a]                          # * is splat operator. expands the range.
 => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>> (1..10).find {|i| i % 3 == 0}     # find/detect finds first value based on condition. Returns a single value or nil.
+=> 3
+>> (1..10).detect {|i| i % 3 == 0}
+=> 3
+>> (1..10).find {|i| i % 11 == 0}
+=> nil
+>> (1..10).find_all {|i| i % 3 == 0}   # find_all/select finds all values based on condition. Returns array.
+=> [3, 6, 9]
+>> (1..10).select {|i| i % 3 == 0}
+=> [3, 6, 9]
+>> [*1..10].delete_if {|i| i % 3 == 0}
+=> [1, 2, 4, 5, 7, 8, 10]
 ```
 
 ### Boolean Methods
@@ -1082,6 +1094,10 @@ irb(main):002:0> fh.close                               # need to close the file
 => false
 >> ('a'..'g').include?('f')
 => true
+>> (1..10).any? {|i| i % 3 == 0}          # any value which satisfies the condition.
+=> true
+>> (1..10).all? {|i| i % 3 == 0}          # does all satisfies the condition.
+=> false
 ```
 
 ## Documentation
