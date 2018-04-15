@@ -126,6 +126,14 @@ irb(main):010:0> a = nil
 => nil
 irb(main):011:0> a.class
 => NilClass
+irb(main):012:0> 1.upto(5).class
+=> Enumerator
+irb(main):013:0> (5 > 2).class
+=> TrueClass
+irb(main):014:0> (5 < 2).class
+=> FalseClass
+irb(main):014:0> :test.class
+=> Symbol
 ```
 
 ## Data Structures
@@ -750,6 +758,26 @@ not     not x       Invert state
 ```
 
 ## File I/O
+
+`__FILE__` refers to the file in which the handle is called.
+
+```ruby
+irb(main):001:0> __FILE__
+=> "(irb)"
+irb(main):002:0>  File.expand_path(__FILE__)
+=> "/Users/gsree/(irb)"
+irb(main):003:0>  File.dirname(__FILE__)
+=> "."
+irb(main):004:0>  File.basename(__FILE__)
+=> "(irb)"
+```
+
+```ruby
+irb(main):001:0> fh = File.new('new_file.txt', 'w')     # File.new initializes a file handle and creates if the file does not exist.
+=> #<File:new_file.txt>
+irb(main):002:0> fh.close                               # need to close the file handle explicitly.
+=> nil
+```
 
 ## Built-in Methods
 
