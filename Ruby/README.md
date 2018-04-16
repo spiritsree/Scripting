@@ -896,14 +896,24 @@ not     not x       Invert state
 `__FILE__` refers to the file in which the handle is called.
 
 ```ruby
-irb(main):001:0> __FILE__
+>> __FILE__
 => "(irb)"
-irb(main):002:0>  File.expand_path(__FILE__)
+>>  File.expand_path(__FILE__)
 => "/Users/gsree/(irb)"
-irb(main):003:0>  File.dirname(__FILE__)
+>>  File.dirname(__FILE__)
 => "."
-irb(main):004:0>  File.basename(__FILE__)
+>>  File.basename(__FILE__)
 => "(irb)"
+>> File.size('sample.txt')     # size in bytes.
+=> 1722
+>> File.extname('sample.txt')
+=> ".txt" 
+>> File.atime('sample.txt')       # Last access (read or write) time.
+=> 2018-04-15 09:48:39 +1000
+>> File.mtime('sample.txt')       # Last modified (write) time.
+=> 2018-04-09 20:56:22 +1000
+>> File.ctime('sample.txt')       # Last status change time.
+=> 2018-04-09 20:56:22 +1000
 ```
 File writing.
 
@@ -981,6 +991,12 @@ Reading file.
 => "d\n"
 >> fh.lineno                     # lineno is used as a counter for gets. It is not the actual lineno.
 => 1
+>> fh.stat
+=> #<File::Stat dev=0x1000004, ino=8604400607, mode=0100644, nlink=1, uid=502, gid=20, rdev=0x0, size=1722, blksize=4194304, blocks=8, atime=2018-04-15 09:48:39 +1000, mtime=2018-04-09 20:56:22 +1000, ctime=2018-04-09 20:56:22 +1000, birthtime=2018-04-09 20:56:22 +1000>
+>> fh.stat.readable?
+=> true
+>> fh.stat.size
+=> 1722
 >> fh.close
 => nil
 >> 
@@ -1000,6 +1016,45 @@ File.open('new_file.txt', 'r') do |file|            # second argument is mode, r
 end
 ```
 
+File rename and delete.
+
+```ruby
+>> File.rename('new_file.txt', 'sample_file.txt')
+=> 0
+>> File.delete('sample_file.txt')
+=> 1
+```
+File booleans.
+
+```ruby
+>> File.exist?('sample.txt')
+=> true
+>> File.file?('sample.txt')
+=> true
+>> File.directory?('sample.txt')
+=> false
+>> File.readable?('sample.txt')
+=> true
+>> File.writable?('sample.txt')
+=> true
+>> File.executable?('sample.txt')
+=> false
+```
+
+Workind with directories.
+
+```ruby
+>> Dir.pwd
+=> "/tmp/ruby/"
+>> Dir.chdir('..')
+=> 0
+>> Dir.entries('.')
+=> [".", "..", "docker", ".DS_Store", "ruby"]
+>> Dir.mkdir('Ruby')
+=> 0
+>> Dir.delete('Ruby')
+=> 0
+```
 
 ## Built-in Methods
 
