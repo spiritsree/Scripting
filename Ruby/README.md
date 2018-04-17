@@ -698,6 +698,28 @@ animal = Cow.new('Maisie', 'Black')
 animal.color
 ```
 
+**Calling super in subclass**
+
+```ruby
+class A
+ def initialize(a, b)
+  @a = a
+  @b = b
+  puts "value1 #{@a}, value2 #{@b}"
+ end
+end
+
+class B < A
+ def initialize(a, b, c)
+  super(a, b)                       ## super() or super(v1, v2...)
+  @c = c
+  puts "value3 #{@c}"
+ end
+end
+
+obj = B.new(1, 2, 3)
+```
+
 ## Modules
 
 Modules are wrappers around ruby code.</br>
