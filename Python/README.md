@@ -318,6 +318,24 @@ def main():
 if __name__ == '__main__': main()
 ```
 
+Calling super in subclass.
+
+```python
+class A:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        print("value1 {}, value2 {}".format(self.a, self.b))
+
+class B(A):
+    def __init__(self, a, b, c):
+        super().__init__(a, b)                 ## super().__init__()  in python 3
+        self.c = c
+        print("value3 {}".format(self.c))
+        
+obj = B(1, 2, 3)
+```
+
 ## Modules
 
 Importing a module.
