@@ -481,11 +481,8 @@ b'\xa5\xb2)\x10"\xe6\xce\xe8\xc2\x17'
 
 ```
 and     x and y     True is both x and y
-&&      x && y      True is both x and y. Higher precedence.
 or      x or y      True if x or y
-||      x || y      True if x or y. Higher precedence.
 not     not x       Invert state
-!       !x          Invert state. Higher precedence.
 ```
 
 ### Identity Operator
