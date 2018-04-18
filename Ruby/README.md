@@ -51,6 +51,9 @@ $ irb
   * [Logical Operators](#logical-operators)
   * [Arithmetic Operator](#arithmetic-operator)
   * [Bitwise Operator](#bitwise-operator)
+* [Exceptions](#exceptions)
+  * [Raising an Exception](#raising-an-exception)
+  * [Handling Exceptions](#handling-exceptions)
 * [File I/O](#file-io)
 * [Built-in Methods](#built-in-methods)
   * [Numeric Methods](#numeric-methods)
@@ -961,6 +964,139 @@ not     not x       Invert state
 ^		XOR
 <<		Shift left
 >>		Shift right
+```
+
+## Exceptions
+
+An exception is a special kind of object, an instance of the class Exception or a descendant of that class that represents some kind of exceptional condition; it indicates that something has gone wrong.
+
+### Raising an Exception
+
+Syntax:
+
+```ruby
+raise <ExceptionClass>, 'Error message'
+
+	OR
+	
+class CustomError < StandardError  
+end
+
+raise CustomError.new('Error Message')
+```
+
+The `raise` method is from the Kernel module is used to raise and exception. By default, `raise` creates an exception of the **RuntimeError** class.
+
+```ruby
+def raise_exception  
+  puts 'Before exception.'  
+  raise 'ERROR: Some Error'  
+  puts 'After Exception'  
+end  
+
+raise_exception
+```
+
+The output is:
+```
+Before exception.
+/Ruby/test.rb:14:in `raise_exception': ERROR: Some Error (RuntimeError)
+	from /Users/gsree/Documents/Python/test.rb:18:in `<main>'
+```
+
+To raise an exception of a specific class, you can pass in the class name as an argument to raise.
+
+```ruby
+a, b = 1, 0
+if b == 0
+ raise ZeroDivisionError, 'Divisor cannot be zero.'
+else
+ puts a / b
+end
+```
+
+The output is:
+
+```
+/Ruby/test.rb:8:in `<main>': Value cannot be zero (ZeroDivisionError)
+```
+
+You can define your own exception class.
+
+```ruby
+class DivisorError < StandardError  
+end 
+
+a, b = 1, 0
+if b == 0
+ raise DivisorError.new('Divisor cannot be zero.')
+else
+ puts a / b
+end
+```
+
+The output is:
+```
+/Ruby/test.rb:8:in `<main>': Divisor cannot be zero. (DivisorError)
+```
+
+### Handling Exceptions
+
+Syntax:
+
+```ruby
+begin  
+  # -  
+rescue OneTypeOfException  
+  # -  
+rescue AnotherTypeOfException  
+  # -  
+else  
+  # No exceptions  
+end  
+```
+
+Exceptions can be handled using begin..rescue blocks.
+
+E.g:
+
+```ruby
+begin  
+  raise 'ERROR: Error Message'  
+rescue Exception => e  
+  puts e.message  
+  puts e.backtrace.inspect  
+end  
+```
+
+The output is:
+
+```
+ERROR: Error Message
+["/Ruby/test.rb:4:in `<main>'"]
+```
+
+From previous example.
+
+```ruby
+class DivisorError < StandardError  
+end 
+
+a, b = 1, 0
+begin
+ if b == 0
+  raise DivisorError.new('Divisor cannot be zero.')
+ else
+  puts a / b
+ end
+rescue DivisorError => e
+ puts 'Error: ' + e.message
+end
+```
+
+The output is:
+```
+Error: Divisor cannot be zero.
 ```
 
 ## File IO
