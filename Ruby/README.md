@@ -36,6 +36,15 @@ $ irb
   * [retry](#retry)
 * [Methods](#methods)
 * [Classes](#classes)
+  * [Getter Method](#getter-method)
+  * [Setter Method](#setter-method)
+  * [Getter-Setter Methods](#getter-setter-methods)
+  * [Initialize Method](#initialize-method)
+  * [Class Methods](#class-methods)
+  * [Class Inheritance](#class-inheritance)
+  * [Subclass Overriding](#subclass-overriding)
+  * [Calling Super](#calling-super)
+  * [Abstract Method](#abstract-method)
 * [Modules](#modules)
 * [Operators](#operators)
   * [Comparison Operators](#comparison-operators)
@@ -584,7 +593,7 @@ Quack
 Moo
 ```
 
-**Getter Method**
+### Getter Method
 
 Syntax:
 
@@ -598,7 +607,7 @@ def name
 end
 ```
 
-**Setter Method**
+### Setter Method
 
 Syntax:
 
@@ -612,7 +621,7 @@ def name=(value)
 end
 ```
 
-**Getter/Setter Methods**
+### Getter-Setter Methods
 
 Syntax:
 
@@ -630,7 +639,7 @@ def name=(value)
 end
 ```
 
-**Initialize method**
+### Initialize Method
 
 Initialize method will get initialized when a new class instance in called using .new method.
 
@@ -646,7 +655,7 @@ end
 SomeName.new(var)
 ```
 
-**Class Methods**
+### Class Methods
 
 A method that can be called on a class, even without and instance of the class.
 
@@ -662,7 +671,7 @@ end
 ClassName.method_name
 ```
 
-**Class inheritence**
+### Class Inheritance
 
 In ruby, class can inherit only from one another class.
 
@@ -674,7 +683,7 @@ class SubClassName < ClassName
 end
 ```
 
-**Subclass Overriding**
+### Subclass Overriding
 
 ```ruby
 class Animal
@@ -698,7 +707,7 @@ animal = Cow.new('Maisie', 'Black')
 animal.color
 ```
 
-**Calling super in subclass**
+### Calling Super
 
 ```ruby
 class A
@@ -718,6 +727,47 @@ class B < A
 end
 
 obj = B.new(1, 2, 3)
+```
+
+### Abstract Method
+
+Ruby doesn't have an abstract method. However we can simulate one.
+
+```ruby
+class Book
+    attr_accessor :title
+	attr_accessor :author
+	
+	def initialize(title, author)
+		raise 'You cannot instantiate an abstract class.'
+	end
+	
+	def display
+		raise 'You must override this method in your implementing class.'
+	end
+end
+
+class MyBook < Book
+    attr_accessor :price
+
+    def initialize(title, author, price)
+        @title = title
+        @author = author
+        @price = price
+    end
+
+    def display
+        puts "Title: #{@title}"
+        puts "Author: #{@author}"
+        puts "Price: #{@price}"
+    end
+end
+title = gets
+author = gets
+price = gets
+
+new_novel = MyBook.new(title, author, price)
+new_novel.display
 ```
 
 ## Modules
