@@ -20,6 +20,9 @@
 * [Functions](#functions)
 * [Generators](#generators)
 * [Classes](#classes)
+  * [Class Inheritance](#class-inheritance)
+  * [Calling Super](#calling-super)
+  * [Abstract Classes](#abstract-classes)
 * [Modules](#modules)
 * [Operators](#operators)
   * [Comparison Operators](#comparison-operators)
@@ -288,7 +291,7 @@ class Dog:
 'Buddy'
 ```
 
-Class inheritance.
+### Class Inheritance
 
 ```python
 #!/usr/bin/env python3
@@ -318,7 +321,7 @@ def main():
 if __name__ == '__main__': main()
 ```
 
-Calling super in subclass.
+### Calling Super
 
 ```python
 class A:
@@ -334,6 +337,45 @@ class B(A):
         print("value3 {}".format(self.c))
         
 obj = B(1, 2, 3)
+```
+
+### Abstract Class
+
+Abstract class serve as a “skeleton” for a subclass. 
+
+```python
+from abc import ABC, abstractmethod
+
+class AbstractOperation(ABC):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        super(AbstractOperation, self).__init__()
+    
+    @abstractmethod
+    def execute(self):
+        pass
+
+class Add(AbstractOperation):
+    def execute(self):
+        return self.a + self.b
+```
+
+Using the @abstractmethod decorator, we enforce implementation of the “execute” method for subclasses that inherit the AbstractOperation class. Forcing the implementation of parent methods in derived classes allows us to separate the interface from implementation details.
+
+Instantiating the base class will give below exception.
+
+```
+>>> a = AbstractOperation(1, 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Can't instantiate abstract class AbstractOperation with abstract methods execute
+```
+
+```
+>>> operation = Add(1, 2)
+>>> operation.execute()
+3
 ```
 
 ## Modules
