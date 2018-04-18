@@ -339,7 +339,7 @@ class B(A):
 obj = B(1, 2, 3)
 ```
 
-### Abstract Class
+### Abstract Classes
 
 Abstract class serve as a “skeleton” for a subclass. 
 
